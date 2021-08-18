@@ -32,8 +32,6 @@ const sortFiles = async (rootPath) => {
                     await fs.rename(currentFilePath, path.join(sortSettings.girls.folderPath, file))
                 } else if (fileContent.toString().indexOf(sortSettings.boys.key) !== -1) {
                     await fs.rename(currentFilePath, path.join(sortSettings.boys.folderPath, file))
-                } else {
-                    await fs.rename(currentFilePath, path.join(__dirname, "boysAndGirls", "unsorted", file))
                 }
             }
         }

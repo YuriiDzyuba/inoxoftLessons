@@ -33,11 +33,6 @@ const sortFiles = async (sortSettings) => {
                         currentPath: currentFilePath,
                         endPath: path.join(sortSettings.boys.folderPath, file)
                     })
-                } else {
-                    allFiles.push({
-                        currentPath: currentFilePath,
-                        endPath: path.join(__dirname, 'unsorted', file)
-                    })
                 }
             }
         } catch (e) {
