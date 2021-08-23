@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="header">
+    <a href="http://localhost:5000/auth">log in</a>
+    <a href="http://localhost:5000/registration">sign in</a>
+</div>
+<div class="content">
+    <div class="users">
+            {{#each users}}
+            <div class="user">
+                <h3>name: {{this.name}}</h3>
+                <h3>age: {{this.age}}</h3>
+                <a href="/users/{{this.id}}">show details</a>
+            </div>
+            {{/each}}
+    </div>
+</div>
+</body>
+</html>

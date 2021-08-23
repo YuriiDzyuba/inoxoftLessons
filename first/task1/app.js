@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 const fs = require('fs').promises;
 
 const sortSettings = {
@@ -14,44 +14,52 @@ const sortSettings = {
 
 const sortFiles = async (sortSettings) => {
 
-    const folders = Object.keys(sortSettings)
-    let allFiles = []
+    const folders = Object.keys(sortSettings);
+    const allFiles = [];
 
     for (const folder of folders) {
+
         try {
             const innerFiles = await fs.readdir(path.join(__dirname, folder));
+
             for (const file of innerFiles) {
-                let currentFilePath = path.join(__dirname, folder, file)
+
+                const currentFilePath = path.join(__dirname, folder, file);
                 const fileContent = await fs.readFile(currentFilePath);
+
                 if (fileContent.toString().indexOf(sortSettings.girls.key) !== -1) {
-                    allFiles.push({
-                        currentPath: currentFilePath,
-                        endPath: path.join(sortSettings.girls.folderPath, file)
-                    })
+                    allFiles.push(
+                        {
+                            currentPath: currentFilePath,
+                            endPath: path.join(sortSettings.girls.folderPath, file)
+                        }
+                    )
                 } else if (fileContent.toString().indexOf(sortSettings.boys.key) !== -1) {
-                    allFiles.push({
-                        currentPath: currentFilePath,
-                        endPath: path.join(sortSettings.boys.folderPath, file)
-                    })
+                    allFiles.push(
+                        {
+                            currentPath: currentFilePath,
+                            endPath: path.join(sortSettings.boys.folderPath, file)
+                        }
+                    )
                 }
             }
         } catch (e) {
-            console.log(e, "folder of folders")
+            console.log(e, "folder of folders");
         }
     }
 
     for (const file of allFiles) {
         try {
             if (file.currentPath !== file.endPath) {
-                await fs.rename(file.currentPath, file.endPath)
+                await fs.rename(file.currentPath, file.endPath);
             }
         } catch (e) {
-            console.log(e)
+            console.log(e);
         }
     }
 }
 
 
-sortFiles(sortSettings)
+sortFiles(sortSettings);
 
 
