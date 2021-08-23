@@ -12,7 +12,7 @@ class CheckFields {
         return regEx.test(name);
     };
     checkAge (age) {
-        const regEx =/^[0-9]{16,133}$/;
+        const regEx =/^[0-9]{2,99}$/;
         return regEx.test(age);
     };
 }
