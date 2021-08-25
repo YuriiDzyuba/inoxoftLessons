@@ -1,0 +1,73 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: wheat;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    text-align: center;
+}
+
+input{
+    padding: .6rem;
+    border: none;
+    border-radius: 500rem;
+}
+
+button {
+    color: white;
+    padding: .6rem 1.2rem;
+    background: seagreen;
+    border: 1px solid transparent;
+    border-radius: 500rem;
+}
+
+button:hover{
+    cursor: pointer;
+    border: 1px solid black;
+
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background: seagreen;
+    color: white;
+    padding: .8rem;
+}
+
+.header a {
+    padding-left: 1rem;
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.content {
+    padding: .8rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.users {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.user{
+    margin: 1rem;
+    padding: .5rem;
+    width: 26vw;
+    border: 1px dashed black;
+}
+
+
+

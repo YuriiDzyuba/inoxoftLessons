@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="header">
+    <a href="http://localhost:5000/auth">log in</a>
+    <a href="http://localhost:5000/registration">sign in</a>
+</div>
+<div class="content">
+    <div class="form">
+        <h1> registration </h1>
+        <form action="/registration" method="post">
+            <input type="email" name="login" placeholder="email@ukr.net">
+            <input type="password" name="password" placeholder="password">
+            <input type="text" name="name" placeholder="name">
+            <input type="text" name="age" placeholder="age">
+            <button type="submit">send</button>
+        </form>
+        <h1 style="color: red"> {{error}} </h1>
+    </div>
+</div>
+</body>
+</html>
