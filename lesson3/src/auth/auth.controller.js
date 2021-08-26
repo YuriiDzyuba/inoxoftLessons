@@ -7,8 +7,7 @@ class AuthController {
     getAuthPage(req, res) {
         try {
             const { error } = req.query;
-            res.status(200)
-                .render(`${STATIC_PATH}/auth`, { error });
+            return res.status(200).render(`${STATIC_PATH}/auth`, { error });
         } catch (e) {
             console.log(e);
         }
@@ -20,23 +19,17 @@ class AuthController {
             const isEmailCorrect = await authService.checkEmail(login);
 
             if (!isEmailCorrect) {
-                (res.status(400)
-                    .redirect('/auth?error=wrong email'));
-                return;
+                return res.status(403).redirect('/auth?error=wrong email');
             }
 
             const users = await userService.getUsers(USER_PATH);
 
             for (const key in users) {
                 if (key === login && users[key].password === password) {
-                    res.status(300)
-                        .redirect('/users');
-                    return;
+                    return res.redirect('/users');
                 }
                 if (key === login && users[key].password !== password) {
-                    res.status(400)
-                        .redirect('/auth?error=wrong password');
-                    return;
+                    return res.status(403).redirect('/auth?error=wrong password');
                 }
             }
 
@@ -50,8 +43,7 @@ class AuthController {
     getRegistrationPage(req, res) {
         try {
             const { error } = req.query;
-            res.status(200)
-                .render(`${STATIC_PATH}/registration`, { error });
+            return res.status(200).render(`${STATIC_PATH}/registration`, { error });
         } catch (e) {
             console.log(e);
         }
@@ -62,33 +54,23 @@ class AuthController {
             const { login, password, name, age } = req.body;
 
             if (!authService.checkEmail(login)) {
-                res.status(400)
-                    .redirect('/registration?error=wrong email');
-                return;
+                return res.status(403).redirect('/registration?error=wrong email');
             }
             if (!authService.checkPassword(password)) {
-                res.status(400)
-                    .redirect('/registration?error=wrong password');
-                return;
+                return res.status(403).redirect('/registration?error=wrong password');
             }
             if (!authService.checkName(name)) {
-                res.status(400)
-                    .redirect('/registration?error=wrong name');
-                return;
+                return res.status(403).redirect('/registration?error=wrong name');
             }
             if (!authService.checkAge(age)) {
-                res.status(400)
-                    .redirect('/registration?error=wrong age');
-                return;
+                return res.status(403).redirect('/registration?error=wrong age');
             }
 
             const users = await userService.getUsers(USER_PATH);
 
             for (const key in users) {
                 if (key === login) {
-                    res.status(400)
-                        .redirect(`/registration?error=user with login: ${login} exists`);
-                    return;
+                    return res.status(409).redirect(`/registration?error=user with login: ${login} exists`);
                 }
             }
 
@@ -103,13 +85,10 @@ class AuthController {
             const newUsers = await userService.addUser(USER_PATH, users, users[login].id);
 
             if (!newUsers) {
-                res.status(500)
-                    .redirect('/registration?error=something went wrong');
-                return;
+                return res.status(500).redirect('/registration?error=something went wrong');
             }
 
-            res.status(300)
-                .redirect('/users');
+            return res.status(300).redirect('/users');
         } catch (e) {
             console.log(e);
         }

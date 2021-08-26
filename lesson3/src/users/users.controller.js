@@ -21,9 +21,8 @@ class UsersController {
             const chosenUser = await userService.getOneUser(USER_PATH, userId);
 
             if (!chosenUser) {
-                res.status(404)
+                return res.status(404)
                     .redirect('/404');
-                return;
             }
 
             res.status(200)
