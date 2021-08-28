@@ -1,6 +1,5 @@
-const CustomError = require('../exeptions/customError');
-const { invalidIdReq } = require('../consts/errorMessages');
-
+const CustomError = require('../../exeptions/customError');
+const { invalidIdReq } = require('../../consts/errorMessages');
 
 function checkId(req, res, next) {
 

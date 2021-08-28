@@ -1,6 +1,5 @@
-const CustomError = require('../exeptions/customError');
-const { invalidPassword } = require('../consts/errorMessages');
-
+const CustomError = require('../../exeptions/customError');
+const { invalidPassword } = require('../../consts/errorMessages');
 
 function checkPassword(req, res, next) {
 

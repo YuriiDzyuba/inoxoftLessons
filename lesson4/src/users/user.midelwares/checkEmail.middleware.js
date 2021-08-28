@@ -1,5 +1,5 @@
-const CustomError = require('../exeptions/customError');
-const { invalidEmail } = require('../consts/errorMessages');
+const CustomError = require('../../exeptions/customError');
+const { invalidEmail } = require('../../consts/errorMessages');
 
 function checkEmail(req, res, next) {
 

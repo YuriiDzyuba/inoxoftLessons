@@ -3,7 +3,6 @@ const CustomError = require('../exeptions/customError');
 const { noHouses, noHouse } = require('../consts/errorMessages');
 
 class HousesController {
-
     async getAllHouses(req, res, next) {
         try {
             const houses = await houseService.getAllHouses();

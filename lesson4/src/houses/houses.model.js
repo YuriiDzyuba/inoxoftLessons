@@ -7,13 +7,14 @@ const House = new Schema({
         trim: true,
     },
     index: {
-        type: String,
+        type: Number,
         required: true,
         trim: true,
     },
     price: {
         type: String,
-        required: false
+        required: false,
+        trim: true,
     },
     isSale: {
         type: Boolean,

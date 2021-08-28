@@ -1,6 +1,6 @@
 const userService = require('./users.service');
 const CustomError = require('../exeptions/customError');
-const { noUsers, noUser , userExist} = require('../consts/errorMessages');
+const { noUsers, noUser, userExist } = require('../consts/errorMessages');
 
 class UsersController {
 

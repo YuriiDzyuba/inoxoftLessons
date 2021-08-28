@@ -1,5 +1,5 @@
-const CustomError = require('../exeptions/customError');
-const { invalidName } = require('../consts/errorMessages');
+const CustomError = require('../../exeptions/customError');
+const { invalidName } = require('../../consts/errorMessages');
 
 function checkName(req, res, next) {
 

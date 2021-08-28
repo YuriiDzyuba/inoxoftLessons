@@ -1,4 +1,8 @@
 module.exports = {
+    serverErr: {
+        code: 500,
+        message: 'server error'
+    },
     noUsers: {
         code: 410,
         message: 'Users deleted'
@@ -29,7 +33,7 @@ module.exports = {
     },
     invalidAge: {
         code: 409,
-        message: 'invalid age  format'
+        message: 'invalid age format'
     },
     invalidIdReq: {
         code: 409,
@@ -46,5 +50,17 @@ module.exports = {
     noHouse: {
         code: 404,
         message: 'Cant find this house'
+    },
+    invalidStreet: {
+        code: 404,
+        message: 'invalid street format'
+    },
+    invalidIndexType: {
+        code: 404,
+        message: 'invalid type of Index. Need number'
+    },
+    invalidIndexValue: {
+        code: 404,
+        message: 'invalid index value'
     },
 };

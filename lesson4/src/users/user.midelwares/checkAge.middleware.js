@@ -1,5 +1,5 @@
-const CustomError = require('../exeptions/customError');
-const { invalidAge } = require('../consts/errorMessages');
+const CustomError = require('../../exeptions/customError');
+const { invalidAge } = require('../../consts/errorMessages');
 
 function checkAge(req, res, next) {
 
