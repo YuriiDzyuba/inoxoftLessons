@@ -17,8 +17,8 @@ class AuthService {
     }
 
     async addNewUser(applicantData) {
-        const { email, name, born_year } = await User.create(applicantData);
-        return { email, name, born_year };
+        const { email, name, born_year, _id } = await User.create(applicantData);
+        return { email, name, born_year, _id };
     }
 }
 

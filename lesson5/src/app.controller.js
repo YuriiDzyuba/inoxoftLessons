@@ -1,5 +1,5 @@
 const CustomError = require('../exeptions/customError');
-const { notFound } = require('../consts/errorMessages');
+const { notFound } = require('../consts/errors');
 
 class AppController {
     getHomePage(req, res) {

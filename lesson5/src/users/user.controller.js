@@ -1,6 +1,6 @@
 const userService = require('./user.service');
 const CustomError = require('../../exeptions/customError');
-const { noUsers, noUser, userExist } = require('../../consts/errorMessages');
+const { noUsers, noUser } = require('../../consts/errors');
 
 class UserController {
 
@@ -62,7 +62,8 @@ class UserController {
                 throw new CustomError(noUser.message, noUser.code);
             }
 
-            res.status(200).json(deletedUser);
+            res.json({ message: `user ${deletedUser.email} has been deleted` });
+
         } catch (e) {
             next(e);
         }

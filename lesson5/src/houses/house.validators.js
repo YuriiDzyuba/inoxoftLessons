@@ -53,5 +53,10 @@ module.exports = {
             .min(USER_ID_LENGTH)
             .max(USER_ID_LENGTH)
             .trim(),
-    })
+    }),
+    getUserHouseQuery: Joi.object({
+        user_id: Joi.string()
+            .min(USER_ID_LENGTH)
+            .max(USER_ID_LENGTH)
+    }),
 };

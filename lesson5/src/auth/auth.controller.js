@@ -2,7 +2,8 @@ const bcrypt = require('bcrypt');
 
 const userService = require('./auth.service');
 const CustomError = require('../../exeptions/customError');
-const { noUser, userExist, invalidPassword } = require('../../consts/errorMessages');
+const { HASH_SALT } = require('../../config');
+const { noUser, userExist, invalidPassword } = require('../../consts/errors');
 
 class AuthController {
 
@@ -10,13 +11,13 @@ class AuthController {
         try {
             const applicantData = req.body;
 
-            const isEmailAvailable = await userService.checkEmail(applicantData.email);
+            const isEmailExist = await userService.checkEmail(applicantData.email);
 
-            if (isEmailAvailable) {
+            if (isEmailExist) {
                 throw new CustomError(userExist.message, userExist.code);
             }
 
-            const hashedPassword = await bcrypt.hash(applicantData.password, 7);
+            const hashedPassword = await bcrypt.hash(applicantData.password, HASH_SALT);
 
             const newUser = await userService.addNewUser({ ...applicantData, password: hashedPassword });
 
@@ -50,7 +51,8 @@ class AuthController {
             res.json({
                 email: user.email,
                 name: user.name,
-                born_year: user.born_year
+                born_year: user.born_year,
+                _id: user._id
             });
 
         } catch (e) {

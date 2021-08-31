@@ -1,5 +1,5 @@
 const CustomError = require('../../../exeptions/customError');
-const { reqQueryNotEmpty } = require('../../../consts/errorMessages');
+const { reqQueryNotEmpty } = require('../../../consts/errors');
 
 function isReqQueryEmpty(req, res, next) {
 

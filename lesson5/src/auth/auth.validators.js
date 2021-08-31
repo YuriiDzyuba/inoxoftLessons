@@ -28,8 +28,8 @@ module.exports = {
         password: Joi.string()
             .regex(PASSWORD_REGEXP)
             .trim()
-            .min(PASSWORD_LENGTH_MAX)
-            .max(PASSWORD_LENGTH_MIN)
+            .min(PASSWORD_LENGTH_MIN)
+            .max(PASSWORD_LENGTH_MAX)
             .required(),
         role: Joi.string()
             .allow(...Object.values(userRoles))
@@ -42,8 +42,8 @@ module.exports = {
         password: Joi.string()
             .regex(PASSWORD_REGEXP)
             .trim()
-            .min(PASSWORD_LENGTH_MAX)
-            .max(PASSWORD_LENGTH_MIN)
+            .min(PASSWORD_LENGTH_MIN)
+            .max(PASSWORD_LENGTH_MAX)
             .required(),
     })
 };

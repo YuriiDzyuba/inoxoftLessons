@@ -1,6 +1,11 @@
 const User = require('./house.model');
 
 class HouseService {
+    async getUserHouses(userID) {
+        const users = await User.find({ user: userID });
+        return users;
+    }
+
     async getAllHouses() {
         const users = await User.find({});
         return users;

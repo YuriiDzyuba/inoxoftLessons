@@ -1,17 +1,24 @@
 const houseService = require('./house.service');
 const CustomError = require('../../exeptions/customError');
-const { noHouses, noHouse } = require('../../consts/errorMessages');
+const { noHouses, noHouse } = require('../../consts/errors');
 
 class HouseController {
     async getAllHouses(req, res, next) {
         try {
+            const { user_id } = req.query;
+
+            if (user_id) {
+                const userHouses = await houseService.getUserHouses(user_id);
+                return res.json(userHouses);
+            }
+
             const houses = await houseService.getAllHouses();
 
             if (!Object.keys(houses).length) {
                 throw new CustomError(noHouses.message, noHouses.code);
             }
 
-            res.status(200).json(houses);
+            res.json(houses);
         } catch (e) {
             next(e);
         }

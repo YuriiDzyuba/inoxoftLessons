@@ -1,5 +1,5 @@
 const CustomError = require('../../../exeptions/customError');
-const { invalidIdReq } = require('../../../consts/errorMessages');
+const { invalidIdReq } = require('../../../consts/errors');
 const { USER_ID_REGEXP } = require('../../../consts/regExp');
 
 function checkId(req, res, next) {
