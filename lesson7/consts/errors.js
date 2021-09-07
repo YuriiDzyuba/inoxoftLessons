@@ -17,11 +17,11 @@ module.exports = {
     },
     userExist: {
         code: 406,
-        message: 'user with this email exists'
+        message: 'user with this account exists'
     },
     emailExist: {
         code: 406,
-        message: 'this email is not available'
+        message: 'this account is not available'
     },
     notFound: {
         code: 404,
@@ -29,7 +29,7 @@ module.exports = {
     },
     invalidEmail: {
         code: 409,
-        message: 'invalid email format'
+        message: 'invalid account format'
     },
     wrongPassword: {
         code: 409,

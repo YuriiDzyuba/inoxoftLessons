@@ -19,7 +19,7 @@ class AuthController {
             const isEmailCorrect = await authService.checkEmail(login);
 
             if (!isEmailCorrect) {
-                return res.status(403).redirect('/auth?error=wrong email');
+                return res.status(403).redirect('/auth?error=wrong account');
             }
 
             const users = await userService.getUsers(USER_PATH);
@@ -54,7 +54,7 @@ class AuthController {
             const { login, password, name, age } = req.body;
 
             if (!authService.checkEmail(login)) {
-                return res.status(403).redirect('/registration?error=wrong email');
+                return res.status(403).redirect('/registration?error=wrong account');
             }
             if (!authService.checkPassword(password)) {
                 return res.status(403).redirect('/registration?error=wrong password');

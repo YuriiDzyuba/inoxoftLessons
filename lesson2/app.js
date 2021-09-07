@@ -32,7 +32,7 @@ app.post('/auth', async (req, res) => {
 
     if (!isEmailCorrect) {
         (res.status(400)
-            .redirect('/auth?error=wrong email'));
+            .redirect('/auth?error=wrong account'));
         return;
     }
 
@@ -66,7 +66,7 @@ app.post('/registration', async (req, res) => {
 
     if (!checkFields.checkEmail(login)) {
         res.status(400)
-            .redirect('/registration?error=wrong email');
+            .redirect('/registration?error=wrong account');
         return;
     }
     if (!checkFields.checkPassword(password)) {

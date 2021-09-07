@@ -13,7 +13,7 @@ module.exports = {
     },
     userExist: {
         code: 406,
-        message: 'user with this email exists'
+        message: 'user with this account exists'
     },
     notFound: {
         code: 404,
@@ -21,7 +21,7 @@ module.exports = {
     },
     invalidEmail: {
         code: 409,
-        message: 'invalid email format'
+        message: 'invalid account format'
     },
     invalidPassword: {
         code: 409,
