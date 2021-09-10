@@ -11,7 +11,7 @@ const accountController = {
         try {
             const { currentUser } = req;
 
-            const activationLink = await accountService.generateActivationLink(currentUser._id.toString());
+            const activationLink = await accountService.addNewActivationLink(currentUser._id.toString());
 
             await accountService.addNewActivationLink(activationLink, currentUser._id);
 
