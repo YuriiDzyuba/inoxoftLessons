@@ -1,8 +1,8 @@
 module.exports = {
-    CREATED_AT:'createdAt',
-    UPDATED_AT:'updatedAt',
-    ID:'_id',
-    V:'__v',
+    CREATED_AT: 'createdAt',
+    UPDATED_AT: 'updatedAt',
+    ID: '_id',
+    V: '__v',
 
     AUTH: 'auth',
     ACCESS_TOKEN: 'accessToken',
@@ -19,9 +19,9 @@ module.exports = {
 
     ADVERTISEMENT: 'advertisement',
     PRODUCT: 'product',
-    PRICE:'price',
-    IS_SALE:'isSale',
-    QUANTITY:'quantity',
+    PRICE: 'price',
+    IS_SALE: 'isSale',
+    QUANTITY: 'quantity',
 
     ACTIVATE_ACCOUNT: 'activateAccount',
     ACTIVATE_ACCOUNT_TOKEN: 'activateAccountToken',

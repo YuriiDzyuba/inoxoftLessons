@@ -1,7 +1,7 @@
 const authService = require('../auth.service');
 
 const CustomError = require('../../../exeptions/customError');
-const { checkAuthInputs, createNewUserValidator } = require('../auth.validators');
+const { checkAuthInputs, createNewUserValidator, createNewAdminValidator } = require('../auth.validators');
 
 const code = require('../../../consts/statusCodes');
 const message = require('../../../consts/responseMessages');
@@ -98,6 +98,22 @@ const authMiddleware = {
             if (!savedToken) throw new CustomError(code.UNAUTHORIZED, message.ACCOUNT_UNACTIVATED);
 
             req.currentUser = savedToken.user;
+
+            next();
+
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    setNewAdminData: (req, res, next) => {
+        try {
+
+            const { error, value } = createNewAdminValidator.validate(req.body);
+
+            if (error) throw new CustomError(code.BAD_REQUEST, error.details[0].message);
+
+            req.newAdmin = value;
 
             next();
 

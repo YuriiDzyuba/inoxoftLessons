@@ -8,7 +8,7 @@ const code = require('../../consts/statusCodes');
 const message = require('../../consts/responseMessages');
 const dbEnum = require('../../consts/dbEnum');
 const { AUTHORIZATION } = require('../../consts/authConstants');
-const { WELCOME_PAGE } = require('../../consts/emailPageTypes');
+const { WELCOME_PAGE, FORGET_PASSWORD_PAGE } = require('../../consts/emailPageTypes');
 
 const authController = {
     createNewUser: async (req, res, next) => {
@@ -36,6 +36,50 @@ const authController = {
                 newUser.email,
                 WELCOME_PAGE,
                 { activationLink: savedLink[dbEnum.ACTIVATE_ACCOUNT_TOKEN] }
+            );
+
+            const normalizedUser = userNormalizer(newUser);
+
+            res.json({ user: normalizedUser });
+
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    createNewAdmin: async (req, res, next) => {
+        try {
+            const { newAdmin } = req;
+
+            const user = await authService.checkEmail(newAdmin.email);
+
+            if (user) throw new CustomError(code.CONFLICT, message.EMAIL_EXISTS);
+
+            const hashedPassword = await authService.hashPassword(newAdmin.password);
+
+            const newUser = await authService.addNewUser({
+                ...newAdmin,
+                password: hashedPassword
+            });
+            const actionLink = await accountService.generateActionToken(dbEnum.FORGOT_PASSWORD_TOKEN);
+
+            const savedLink = await accountService.addNewActionToken(
+                dbEnum.FORGOT_PASSWORD_TOKEN,
+                {
+                    [dbEnum.FORGOT_PASSWORD_TOKEN]: actionLink,
+                    [dbEnum.USER]: newUser._id
+                }
+            );
+            console.log(savedLink);
+            if (!savedLink) throw new CustomError(code.INTERNAL_SERVER_ERROR, message.CANT_CREATE_LINK);
+
+            await accountService.sendMail(
+                newUser.email,
+                FORGET_PASSWORD_PAGE,
+                {
+                    activationLink: savedLink[dbEnum.FORGOT_PASSWORD],
+                    header: message.ADMIN_ACCOUNT_CREATED
+                }
             );
 
             const normalizedUser = userNormalizer(newUser);

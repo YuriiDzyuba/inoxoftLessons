@@ -26,4 +26,4 @@ module.exports = {
     BAD_GATEWAY: 502,
     SERVICE_UNAVAILABLE: 503,
 
-}
+};

@@ -63,6 +63,7 @@ const userMiddleware = {
             if (!availableRoleArr.includes(role)) throw new CustomError(code.FORBIDDEN, message.FORBIDDEN);
 
             next();
+
         } catch (e) {
             next(e);
         }

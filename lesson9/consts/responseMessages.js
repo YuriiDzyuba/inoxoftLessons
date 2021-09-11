@@ -30,13 +30,13 @@ module.exports = {
     NO_ADS: 'Advertisements not found',
     NO_ACTIVATION_LINK: 'activation link not found',
 
-    CANT_ACTIVATE_ACCOUNT:'Can\'t activate account',
-    CANT_FIND_TOKEN:'Can\'t find token',
-    CANT_CREATE_LINK:'Can\'t create link',
-    CANT_FIND_ADS:'Can\'t find Advertisements',
-    CANT_CREATE_AD:'Can\'t create Advertisement',
-    CANT_UPDATE_AD:'Can\'t update Advertisement',
-    CANT_DELETE_AD:'Can\'t delete Advertisement',
+    CANT_ACTIVATE_ACCOUNT: 'Can\'t activate account',
+    CANT_FIND_TOKEN: 'Can\'t find token',
+    CANT_CREATE_LINK: 'Can\'t create link',
+    CANT_FIND_ADS: 'Can\'t find Advertisements',
+    CANT_CREATE_AD: 'Can\'t create Advertisement',
+    CANT_UPDATE_AD: 'Can\'t update Advertisement',
+    CANT_DELETE_AD: 'Can\'t delete Advertisement',
 
     USER_EXISTS: 'User with this account exists',
     EMAIL_EXISTS: 'This email already exists',
@@ -50,7 +50,8 @@ module.exports = {
     REQ_BODY_NOT_EMPTY: 'http request must be without body',
 
     PASSWORD_CHANGED: 'Password changed successfully',
-    AD_CREATED: 'Advertisement created successfully'
+    AD_CREATED: 'Advertisement created successfully',
 
+    ADMIN_ACCOUNT_CREATED: 'Admin account was created, please change your password'
 
-}
+};

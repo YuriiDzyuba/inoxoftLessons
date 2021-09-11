@@ -36,4 +36,10 @@ authRouter.post('/refresh',
     authMiddleware.checkToken(REFRESH_TOKEN),
     authController.refreshTokens);
 
+authRouter.post('/create_admin_account',
+    authMiddleware.checkToken(),
+    authMiddleware.checkUserRole([userRoles.SUPER_ADMIN]),
+    authMiddleware.setNewAdminData,
+    authController.createNewAdmin);
+
 module.exports = authRouter;

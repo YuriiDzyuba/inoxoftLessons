@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 
 const superAdmin = {
-    [EMAIL]: 'Admin@uu.net',
+    [EMAIL]: 'admin@uu.net',
     [PASSWORD]: 'dfsdf5yyyg',
     [NAME]: 'Admin',
     [BORN_YEAR]: 1999,
