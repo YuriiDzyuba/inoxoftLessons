@@ -1,0 +1,32 @@
+{
+  "name": "lesson3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run stop && pm2 start src/main.js --watch -- .env.development && pm2 logs",
+    "start": "npm run stop && pm2 start src/main.js --watch -- .env",
+    "start:once": "node src/main.js .env.development",
+    "nodm": "nodemon src/main.js .env ",
+    "stop": "pm2 kill",
+    "setStarterSettings": "node startSettings/setSuperAdmin.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "joi": "^17.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.1",
+    "nodemailer": "^6.6.3",
+    "express-fileupload": "^1.2.1",
+    "pm2": "^5.1.1",
+    "uuid": "^8.3.2",
+    "aws-sdk": "^2.985.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
